@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fidxd86kqk84"
+path="res://.godot/imported/Som de Arma Laser - Efeito Sonoro (HD) [TubeRipper.com].mp3-cf856fe980eb035277665c19621bfb81.mp3str"
+
+[deps]
+
+source_file="res://songs/Som de Arma Laser - Efeito Sonoro (HD) [TubeRipper.com].mp3"
+dest_files=["res://.godot/imported/Som de Arma Laser - Efeito Sonoro (HD) [TubeRipper.com].mp3-cf856fe980eb035277665c19621bfb81.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

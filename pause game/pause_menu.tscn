@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://muo0nphggq7m"]
+
+[ext_resource type="Script" path="res://character/scripts/pause_menu.gd" id="1_jcv0j"]
+[ext_resource type="Theme" uid="uid://cv7f64e2bnj3y" path="res://themes/new_theme.tres" id="2_vawoc"]
+[ext_resource type="FontFile" uid="uid://cvtkhuaoexv1w" path="res://ttfs/Minecraft.ttf" id="3_d1cwo"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_qv6bw"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_nchab"]
+events = [SubResource("InputEventAction_qv6bw")]
+
+[node name="Pause_menu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_jcv0j")
+
+[node name="bg_overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.403922)
+
+[node name="menu_holder" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause_btn" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("2_vawoc")
+theme_override_fonts/font = ExtResource("3_d1cwo")
+shortcut = SubResource("Shortcut_nchab")
+text = "RESUME"
+
+[node name="Quit_btn2" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("2_vawoc")
+theme_override_fonts/font = ExtResource("3_d1cwo")
+text = "QUIT GAME"
+
+[connection signal="pressed" from="menu_holder/Pause_btn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="menu_holder/Quit_btn2" to="." method="_on_quit_btn_2_pressed"]

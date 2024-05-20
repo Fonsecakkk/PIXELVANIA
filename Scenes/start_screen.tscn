@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl0naktaklsic"]
+
+[ext_resource type="Script" path="res://character/scripts/start_screen.gd" id="1_dc05b"]
+[ext_resource type="Texture2D" uid="uid://i7co0yfyry4d" path="res://imagens rapidas/back.jpg" id="2_e884p"]
+[ext_resource type="Texture2D" uid="uid://dfngdyww7u6gk" path="res://imagens rapidas/logo game.png" id="3_p3hrh"]
+[ext_resource type="FontFile" uid="uid://cvtkhuaoexv1w" path="res://ttfs/Minecraft.ttf" id="4_4xsc3"]
+[ext_resource type="AudioStream" uid="uid://ggqqajnua8qc" path="res://efeitos sonoros/8d82b5_Super_Mario_Bros_Die_Sound_Effect.mp3" id="5_wq6yj"]
+
+[sub_resource type="Theme" id="Theme_cbj6h"]
+
+[node name="startScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dc05b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.380392, 0.729412, 0.843137, 1)
+
+[node name="bg" type="Control" parent="ColorRect"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back3" type="Sprite2D" parent="ColorRect/bg"]
+position = Vector2(319.5, 161.5)
+scale = Vector2(0.499219, 0.5168)
+texture = ExtResource("2_e884p")
+
+[node name="Back2" type="Sprite2D" parent="ColorRect/bg"]
+position = Vector2(332, 139)
+scale = Vector2(1.63438, 1.68556)
+texture = ExtResource("3_p3hrh")
+
+[node name="controls" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -33.0
+offset_right = 37.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="startBtn" type="Button" parent="ColorRect/controls"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../quitBtn")
+theme = SubResource("Theme_cbj6h")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.756863, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.756863, 0.121569, 1)
+theme_override_fonts/font = ExtResource("4_4xsc3")
+theme_override_font_sizes/font_size = 0
+text = "  Start   "
+
+[node name="controlsBtn" type="Button" parent="ColorRect/controls"]
+layout_mode = 2
+theme = SubResource("Theme_cbj6h")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.756863, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.756863, 0.121569, 1)
+theme_override_fonts/font = ExtResource("4_4xsc3")
+theme_override_font_sizes/font_size = 0
+text = "Controls"
+
+[node name="quitBtn" type="Button" parent="ColorRect/controls"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../startBtn")
+theme = SubResource("Theme_cbj6h")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.984314, 0.756863, 0.121569, 1)
+theme_override_colors/font_hover_color = Color(0.984314, 0.756863, 0.121569, 1)
+theme_override_fonts/font = ExtResource("4_4xsc3")
+theme_override_font_sizes/font_size = 0
+text = "Quit"
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(304, 160)
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wq6yj")
+autoplay = true
+
+[connection signal="pressed" from="ColorRect/controls/startBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="ColorRect/controls/controlsBtn" to="." method="_on_controls_btn_pressed"]
+[connection signal="pressed" from="ColorRect/controls/quitBtn" to="." method="_on_quit_btn_pressed"]

@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=3 uid="uid://dchi03vr50pw0"]
+
+[ext_resource type="Texture2D" uid="uid://cfgjycfe82xba" path="res://Game Over/BtnAgain.png" id="1_eil68"]
+[ext_resource type="Script" path="res://character/scripts/game_over.gd" id="1_ob4nq"]
+[ext_resource type="Texture2D" uid="uid://dudjat22fo63w" path="res://Game Over/GameOver.png" id="2_rkug3"]
+[ext_resource type="AudioStream" uid="uid://u33sbr86k5d0" path="res://efeitos sonoros/pixel-death-66829.mp3" id="4_mmowj"]
+
+[sub_resource type="Animation" id="Animation_t2u3b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gve7n"]
+resource_name = "retry"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amu0p"]
+_data = {
+"RESET": SubResource("Animation_t2u3b"),
+"retry": SubResource("Animation_gve7n")
+}
+
+[sub_resource type="Animation" id="Animation_tih76"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(323, 91)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6mvca"]
+resource_name = "reveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(323, 0), Vector2(323, 91)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4q56e"]
+_data = {
+"RESET": SubResource("Animation_tih76"),
+"reveal": SubResource("Animation_6mvca")
+}
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_ob4nq")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="BtnAgain" type="Sprite2D" parent="."]
+position = Vector2(321, 188)
+scale = Vector2(3.63889, 3.33333)
+texture = ExtResource("1_eil68")
+
+[node name="BtnrRetry" type="TextureButton" parent="BtnAgain"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -18.1374
+offset_top = -8.7
+offset_right = 83.8626
+offset_bottom = 43.3
+texture_normal = ExtResource("1_eil68")
+
+[node name="Anim2" type="AnimationPlayer" parent="BtnAgain/BtnrRetry"]
+libraries = {
+"": SubResource("AnimationLibrary_amu0p")
+}
+autoplay = "retry"
+
+[node name="GameOver" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(323, 91)
+scale = Vector2(2.97222, 2.72222)
+texture = ExtResource("2_rkug3")
+
+[node name="anim" type="AnimationPlayer" parent="GameOver"]
+libraries = {
+"": SubResource("AnimationLibrary_4q56e")
+}
+autoplay = "reveal"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mmowj")
+autoplay = true
+
+[connection signal="pressed" from="BtnAgain/BtnrRetry" to="." method="_on_btnr_retry_pressed"]

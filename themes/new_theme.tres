@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cv7f64e2bnj3y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wopf1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tlo75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nvebf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc6jg"]
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.803922, 0.533333, 0.0392157, 1)
+Button/colors/font_hover_color = Color(0.803922, 0.533333, 0.0392157, 1)
+Button/colors/font_hover_pressed_color = Color(0.803922, 0.533333, 0.0392157, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_wopf1")
+Button/styles/hover = SubResource("StyleBoxEmpty_tlo75")
+Button/styles/normal = SubResource("StyleBoxEmpty_nvebf")
+Button/styles/pressed = SubResource("StyleBoxEmpty_dc6jg")

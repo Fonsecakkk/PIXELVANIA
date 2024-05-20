@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bubkk7nmg0fbg"]
+
+[ext_resource type="Texture2D" uid="uid://cql7tfu5xd33i" path="res://imagens rapidas/NPC - mulher.png" id="1_s3hkm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nu7e0"]
+
+[node name="NPC_mulher" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s3hkm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nu7e0")

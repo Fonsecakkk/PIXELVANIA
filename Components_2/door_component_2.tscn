@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://x6jn0vqboyer"]
+
+[ext_resource type="Script" path="res://Components_2/DoorComponent_2.gd" id="1_m3hww"]
+[ext_resource type="Texture2D" uid="uid://d0dbd3vyckij2" path="res://imagens rapidas/wooden_door_b.png" id="2_64is5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knsa2"]
+size = Vector2(20, 6.25)
+
+[sub_resource type="Animation" id="Animation_rcldu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture_2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t4187"]
+resource_name = "close_2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture_2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_bd3ty"]
+resource_name = "open_2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture_2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i11ck"]
+_data = {
+"RESET": SubResource("Animation_rcldu"),
+"close_2": SubResource("Animation_t4187"),
+"open_2": SubResource("Animation_bd3ty")
+}
+
+[node name="DoorComponent_2" type="Area2D" node_paths=PackedStringArray("_animation")]
+script = ExtResource("1_m3hww")
+_teleport_position = Vector2(435, 188)
+_animation = NodePath("Animation_2")
+
+[node name="Texture_2" type="Sprite2D" parent="."]
+texture = ExtResource("2_64is5")
+hframes = 2
+
+[node name="Collision_2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.125)
+shape = SubResource("RectangleShape2D_knsa2")
+
+[node name="Animation_2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i11ck")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Animation_2" to="." method="_on_animation_2_animation_finished"]
+[connection signal="animation_finished" from="Animation_2" to="." method="_on_animation_2_finished"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhu4s0ahgvfs2"
+path="res://.godot/imported/Fiend Fight DDTTRPG BattleCombatFight Music 1 Hour [TubeRipper (mp3cut.net).mp3-dc0127d8d330a109bf0019d74852b23e.mp3str"
+
+[deps]
+
+source_file="res://songs/Fiend Fight DDTTRPG BattleCombatFight Music 1 Hour [TubeRipper (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Fiend Fight DDTTRPG BattleCombatFight Music 1 Hour [TubeRipper (mp3cut.net).mp3-dc0127d8d330a109bf0019d74852b23e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
